@@ -13,7 +13,17 @@ cp -avf "/ctx/system_files"/. /
 # https://mirrors.rpmfusion.org/mirrorlist?path=free/fedora/updates/43/x86_64/repoview/index.html&protocol=https&redirect=1
 
 # this installs a package from fedora repos
-dnf5 install -y tmux
+dnf config-manager setopt fedora-cisco-openh264.enabled=1
+
+dnf5 install -y pcsc-cyberjack AusweisApp2 firefox thunderbird keepassxc
+
+dnf5 config-manager addrepo --set=baseurl="https://packages.microsoft.com/yumrepos/vscode" --id="vscode"
+dnf5 config-manager setopt vscode.enabled=0
+# FIXME: gpgcheck is broken for vscode due to it using `asc` for checking
+# seems to be broken on newer rpm security policies.
+dnf5 config-manager setopt vscode.gpgcheck=0
+dnf5 install --nogpgcheck --enable-repo="vscode" -y \
+    code
 
 # Use a COPR Example:
 #
@@ -24,4 +34,4 @@ dnf5 install -y tmux
 
 #### Example for enabling a System Unit File
 
-systemctl enable podman.socket
+# systemctl enable podman.socket
