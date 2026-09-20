@@ -14,8 +14,11 @@ cp -avf "/ctx/system_files"/. /
 
 # this installs a package from fedora repos
 dnf config-manager setopt fedora-cisco-openh264.enabled=1
+dnf5 -y copr enable lizardbyte/stable 
 
-dnf5 install -y pcsc-cyberjack AusweisApp2 firefox thunderbird keepassxc
+dnf5 install -y pcsc-cyberjack AusweisApp2 firefox thunderbird keepassxc sunshine
+
+dnf5 -y copr disable lizardbyte/stable 
 
 dnf5 config-manager addrepo --set=baseurl="https://packages.microsoft.com/yumrepos/vscode" --id="vscode"
 dnf5 config-manager setopt vscode.enabled=0
