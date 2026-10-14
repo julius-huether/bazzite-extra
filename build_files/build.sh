@@ -16,7 +16,7 @@ cp -avf "/ctx/system_files"/. /
 dnf config-manager setopt fedora-cisco-openh264.enabled=1
 dnf5 -y copr enable lizardbyte/stable 
 
-dnf5 install -y pcsc-cyberjack AusweisApp2 firefox thunderbird keepassxc sunshine
+dnf5 install -y pcsc-cyberjack AusweisApp2 firefox thunderbird keepassxc sunshine konqueror
 
 dnf5 -y copr disable lizardbyte/stable 
 
